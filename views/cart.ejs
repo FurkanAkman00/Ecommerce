@@ -1,0 +1,70 @@
+<%- include('partials/_header') %>
+
+
+<div class="cart-container">
+   <div class="cart-header">
+      <h2>SHOPPING CART</h2>
+   </div>
+
+   <% if(cartProducts != undefined){ %>
+
+      <div class="total-price">
+
+         <h2>TOTAL PRICE</h2>
+         <p><%= totalPrice %> $</p>
+         <a href="/order">BUY NOW</a>
+
+      </div>
+
+      <% for(let i=0;i<products.length;i++){ %>
+         
+         <div class="cart-product">
+            <div class="cart-img">
+               <h2><%= products[i].name %></h2>
+               <img class="product-img" src="/images/<%= images[i] %>" alt="">
+            </div>
+
+            <div class="cart-text">
+               <p class="cart-description"><%= products[i].short_description %></p>
+            </div>
+         
+            <div class="variation">
+               <p class="product-prize"><%= products[i].price %> $</p>
+               <% if(cartProducts[i].variant.variation_values.size){ %> <p>SIZE: <%= cartProducts[i].variant.variation_values.size.toUpperCase() %></p> <% } %>
+               <% if(cartProducts[i].variant.variation_values.color){ %> <p>COLOR: <%= cartProducts[i].variant.variation_values.color.toUpperCase() %></p> <% } %>
+               <% if(cartProducts[i].variant.variation_values.width){ %> <p>WIDTH: <%= cartProducts[i].variant.variation_values.width.toUpperCase() %> </p> <% } %>
+            </div>
+
+            <form method="POST" action="/cart/<%= cartProducts[i].productId %>?_method=DELETE">
+
+               <input type="hidden" name="variant_id" value="<%= cartProducts[i].variant.product_id %>">
+               <input type="hidden" name="product_id" value="<%= cartProducts[i].productId %>">
+
+               <div class="cart-buttons">
+                  <a class="more-info" href="/product/<%= products[i].id %>">More Info</a>
+                  <button class="delete" type="submit">DELETE</button>
+               </div>
+
+               <div class="quantity">
+                  <button class="decrease" type="submit" formmethod="POST" formaction="/cart/quantity/?method=decrease">-</button>
+                  <input type="text" name="quantity_value" id="quantity" value="<%= cartProducts[i].quantity %>" readonly>
+                  <button class="increment" type="submit" formmethod="POST" formaction="/cart/quantity/?method=increment">+</button>
+               </div>
+
+            </form>
+            
+         </div>
+      <% } %>
+
+   <% } %>
+
+   <% if(cartProducts == undefined) { %>
+      <div class="cart-alert">
+         <h1>No product found. Why don't you add some ?</h1>
+      </div>
+   <% } %>
+
+</div>
+ 
+
+<%- include('partials/_footer') %>

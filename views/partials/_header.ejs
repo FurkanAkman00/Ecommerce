@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="/stylesheets/navbar.css">
+    <link rel="stylesheet" href="/stylesheets/main-category.css">
+    <link rel="stylesheet" href="/stylesheets/preview-card.style.css">
+    <link rel="stylesheet" href="/stylesheets/breadcrumbs.style.css">
+    <link rel="stylesheet" href="/stylesheets/product-detail.style.css">
+    <link rel="stylesheet" href="/stylesheets/signup.css">
+    <link rel="stylesheet" href="/stylesheets/cart.css">
+    <link rel="stylesheet" href="/stylesheets/user.css">
+    <link rel="stylesheet" href="/stylesheets/search.css">
+
+    <title>Document</title>
+
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+          <ul class="main-nav">
+            <h1 class="header">ALIBAZON</h1>
+            <li class="nav-item <%= id == 'home' && 'active' %>"><a class="n-link" href="/">Home</a></li>
+            <li class="nav-item <%= id == 'mens' && 'active' %>"><a class="n-link" href="/categories/mens">Mens</a></li>
+            <li class="nav-item <%= id == 'womens' && 'active' %>"><a class="n-link" href="/categories/womens">Womens</a></li>
+
+            <% if(isSignedIn){ %>
+                <li class="nav-item <%= id == 'cart' && 'active' %>"><a class="n-link" href="/cart">Cart</a></li>
+                <li class="nav-item <%= id == 'profile' && 'active' %>"><a class="n-link" href="/user">Profile</a></li>
+                <li class="nav-item"><a class="n-link" href="/auth/logout">Logout</a></li>
+            <% } %>
+
+            <% if(!isSignedIn){ %>
+              <li class="nav-item <%= id == 'login' && 'active' %>"><a class="n-link" href="/auth/login">Login</a></li>
+              <li class="nav-item <%= id == 'register' && 'active' %>"><a class="n-link" href="/auth/register">Register</a></li>
+            <% } %>
+            
+          </ul>
+          <div class="indicator"></div>
+        </nav>
+
+        <div class="searchbar">
+          <form method="GET" action="/search">
+            <input class="search-area" type="text" name="searchInput" placeholder="Search...">
+            <button class="search-button">Search</button>
+          </form>
+        </div>
+        
+      </header>
+
+        <ul id="breadcrumb">
+          <% for(let i=0;i< breadCrumbs.length;i++){ %>
+            <li><a href="/<%= breadCrumbs[i].value %>"><%= breadCrumbs[i].key %></a></li>
+          <% } %>
+        </ul>
+    

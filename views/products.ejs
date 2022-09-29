@@ -1,0 +1,41 @@
+<%- include('partials/_header') %>
+    <% if(products && medImages){ %>
+        <div class="card-container">
+                <% for(let i = 0;i< products.length;i++) { %>
+                    
+                    <div class="card-preview">
+                        <div class="mix-container">
+                            <img src="/images/<%= medImages[i].images[0].link %>" alt="">
+                            <div class="card-text-container">
+                                <h3 class="header"><%= products[i].name %></h4>
+                                <p><%= products[i].short_description %></p>
+                                <br>
+                                <h4><%= products[i].price %> <%= products[i].currency %></h4>
+                            </div>
+                        </div>
+                        <a href="/product/<%= products[i].id %>">More Info</a>
+                    </div>
+
+                <% } %>
+                <div class="pages-container">
+                    <%if(page > 1){ %>
+                        <a class="pages" href="/products/<%= products[0].primary_category_id %>/?page=<%= --page %>">PREVIOUS PAGE</a>
+                    <% } %>
+
+                    <% if(products.length == 25){%>
+                        <a class="pages" href="/products/<%= products[0].primary_category_id %>/?page=<%= ++page %>">NEXT PAGE</a>
+                    <% }%>
+                </div>
+        </div>
+    <% } %>
+
+    <% if(!(products && medImages)){ %>
+        <div class="products-alert" style="margin: auto;margin-top:200px;font-size:50px;">
+            <h2 style="color: red">No Product Found</h2>
+        </div>
+
+    <% } %>
+
+       
+
+<%- include('partials/_footer') %>

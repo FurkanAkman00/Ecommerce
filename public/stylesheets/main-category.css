@@ -1,0 +1,38 @@
+.mcategory{
+    padding: 0 200px;
+}
+
+.subcategories{
+    margin:10px;
+    margin-top: 40px;
+}
+
+.view-product{
+    text-decoration:none;
+    border: 2px solid #00ACEC;
+    padding:10px 20px 10px 20px;
+    border-radius:2px;
+    color:#00ACEC;
+    margin:5px;
+}
+
+.view-product:hover {
+    color:#FFFFFF;
+    background-color:#00acec;
+  }
+
+.subcategories>h3{
+    margin: 10px;
+}
+
+.subcategories>p{
+    margin-top: 10px;
+    width: 850px;
+}
+.mcategory-container{
+    margin-top: 15px;
+}
+
+.scategory-container{
+    margin-top: 80px;
+}

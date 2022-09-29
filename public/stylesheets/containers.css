@@ -1,0 +1,395 @@
+html {
+    box-sizing: border-box;
+  }
+  *, *:before, *:after {
+    box-sizing: inherit;
+  }
+  
+* {
+    margin: 0px;
+    padding: 0px;
+    /* box-sizing: border-box; */
+}
+
+.row-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: space-between;
+    /* align-items: center; */
+    /* overflow: hidden; */
+    position: relative;
+}
+.i-centered{
+    align-items: center;
+}
+
+.column-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-content: space-between;
+    /* align-items: center; */
+    /* overflow: hidden; */
+    position: relative
+}
+.col-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-content: space-between;
+    align-items: center;
+    /* overflow: hidden; */
+    position: relative
+}
+
+.dev-bordered{
+    border: solid 1px black;
+}
+
+.small-padded{
+    padding: 0.7rem;
+}
+
+.big-padded{
+    padding: 1.4rem;
+}
+
+.big-margined{
+    margin: 1.4rem;
+}
+
+.small-margined{
+    margin: 0.7rem;
+}
+.centered{
+    margin: auto;
+    width: 84%;
+}
+
+.centered div div img{
+    width: 100%;
+}
+
+.no-list{
+    list-style: none;
+}
+
+.styled{
+    border: 1px solid #e6e6fa;
+    border-radius: 5px;
+    -webkit-box-shadow: 4px 3px 24px -10px rgba(0,0,0,0.56);
+    -moz-box-shadow: 4px 3px 24px -10px rgba(0,0,0,0.56);
+    box-shadow: 4px 3px 24px -10px rgba(0,0,0,0.56);
+    
+}
+
+.show-more-btn{
+    max-width: 140px;
+    font-size: 1rem;
+    border: 4px solid #d234a0;
+    border-radius: 0.7rem;
+    background-color: #e07014;
+    text-align: center;
+    color: aliceblue;
+    text-decoration: none;
+    max-height: 1.5rem;
+}
+.show-more-btn:hover{
+    background-color: #e07014;
+    color: white;
+}
+.h200px{
+    height: 200px;
+}
+.h400px{
+    height: 500px;
+}
+.h100px{
+    height: 100px;
+}
+.h70px{
+    height: 70px;
+}
+.h75{
+    height: 75%;
+}
+
+.h50px{
+    height: 50px;
+}
+.h30px{
+    height: 30px;
+}
+
+.wraped{
+    flex-wrap: wrap;
+}
+
+.h250{
+    height: 20vw;
+}
+.h100{
+    
+    height: 100%;
+}
+
+.no-overflow{
+    overflow: hidden;
+}
+
+.w60{
+    width:60%;
+}
+.w25{
+    width:25%;
+}
+.w15{
+    width:15%;
+}
+.w10{
+    width:10%;
+}
+.w75{
+    width:75%;
+    
+}
+.w65{
+    width: 65%;
+}
+.w35{
+    width: 35%;
+}
+.w50{
+    width: 50%;
+}
+
+.w45{
+    max-width:48%;
+}
+.w100{
+    width:100%;
+}
+
+.w80{
+    width:80%;
+}
+.w70{
+    width:70%;
+}
+
+.w30{
+    width:30%;
+}
+
+.float-right{
+    justify-content: flex-end;
+}
+
+.fit-in{
+    align-content: center;
+    align-items: center;
+}
+
+.h10{
+    height: 150px;
+}
+
+.row-cont{
+    display: flex;
+    
+    justify-content: center;
+    align-content: space-between;
+    
+}
+
+.lr-padded{
+    padding: 0 1rem;
+}
+.tb-padded{
+    padding:  1rem 0;
+}
+
+.bottom-border{
+    border-top: lightslategray 1px solid;
+}
+
+.blue{
+    background-color: #b1d9dd;
+    color: #232b2c;
+    border-radius: 0.3rem;
+    border:none;
+    padding:1rem;
+}
+.green{
+    background-color: #b4afbd;
+    color: #232b2c;
+    border-radius: 0.3rem;
+    border:none;
+    padding:1rem;
+}
+
+.lightgrey{
+    background-color: #f2f1eb;
+    color: #232b2c;
+
+}
+.lightgrey-b{
+    /* max-width: 140px; */
+    /* max-height: 1.5rem; */
+    background-color: #f2f1eb;
+    color: black;
+    border: 1px solid #949084;;
+    padding:1rem;
+    border-radius: 0.3rem;
+    font-size: 1.2rem;
+    font-weight: 500;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+}
+
+.flex-left{
+    justify-content: start;
+}
+.flex-rigth{
+    justify-content: end;
+}
+
+.orange{
+    color:#e07014;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+   
+}
+
+.red{
+    color: rgb(189, 34, 34);
+    font-weight: 700;
+}
+
+.styled-text{
+    font-size: 1.7rem;
+    font-weight: 500;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    justify-content: center;
+}
+
+.dark-schema{
+    background-color: #10100e;
+    color: white;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.dark-schema hr{
+    color:#2a2925
+}
+
+.orange-button{
+    background-color: #e07014;
+    color: white;
+    width: 100%;
+    height: 2.2rem;
+    display: inline-flex;
+    text-decoration: none;
+    /* vertical-align: middle; */
+   
+    
+    align-items: center;
+    justify-content: center;
+    border-radius:0.3rem;
+    padding-top: 4px;
+    font-size: 1.5rem;
+    line-height: 1;
+    /* line-height: 100%; */
+}
+
+
+.sticky{
+    position: sticky;
+    top: 0;
+}
+ul.size-chart li {
+    display:inline;
+  }
+
+.form-inline {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+}
+.form-inline-float{
+    float: left;
+    padding-right: 5px;
+    margin-bottom: 5px;
+}
+
+.no-button{
+    border:none;
+}
+
+
+.image {
+    width: 100%;
+    height: 95%;
+    background-size: cover;
+    background-position: center;
+    margin-bottom: 5px;
+    position: relative;
+    
+  }
+
+  .custom-button {
+    width: 80%;
+    opacity: 0.7;
+    position: absolute;
+    top: 255px;
+    
+  }
+.custom-button2 {
+    min-width: 165px;
+    width: auto;
+    height: 50px;
+    letter-spacing: 0.5px;
+    line-height: 50px;
+    padding: 0 35px 0 35px;
+    font-size: 15px;
+    background-color: black;
+    color: white;
+    text-transform: uppercase;
+    font-family: 'Open Sans Condensed';
+    font-weight: bolder;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    top: 255px;
+    opacity: 0.7;
+}
+  
+.custom-button2:hover{
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+}
+  
+    
+  
+.custom-button2.inverted {
+      background-color: white;
+      color: black;
+      border: 1px solid black;
+}
+  
+.custom-button2.inverted:hover {
+        background-color: black;
+        color: white;
+        border: none;
+}
+
+.no-text-decor{
+    text-decoration: none;
+    color: inherit;
+}
+ 
+

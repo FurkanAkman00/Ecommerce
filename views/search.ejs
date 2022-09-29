@@ -1,0 +1,52 @@
+<%- include('partials/_header') %>
+
+
+<div class="search-container">
+
+    <div class="search-header">
+        <h1>SEARCH RESULTS</h1>
+    </div>
+        <% for(let i = 0; i<searchProducts.length;i++){ %>
+        <div class="product-preview">
+            <div class="search-product">
+                <div class="search-img">
+                    <img width="150" height="150" src="/images/<%= searchImages[i].images[0].link %>" alt="">
+                </div>
+
+                <div class="search-name">
+                    <h2><%= searchProducts[i].name %></h2>
+                </div>
+
+                <div class="search-category">
+                    <p> Category: <%= searchProducts[i].primary_category_id %> </p>
+                </div>
+
+                <div class="search-price">
+                    <p> Price: <%= searchProducts[i].price %> $</p>
+                </div>
+
+                <div class="search-link">
+                    <a href="/product/<%= searchProducts[i].id %>"> View Product </a>
+                </div>
+            </div>
+        </div>
+        <% } %>
+
+    <button class="load-btn">LOAD MORE</button>
+
+
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+
+<script>
+    $(".product-preview").slice(0,25).show()
+    $(".load-btn").on("click",function(){
+        $(".product-preview:hidden").slice(0,25).slideDown()
+        if ($(".product-preview:hidden").length == 0){
+            $(".load-btn").fadeOut("slow")
+        }
+    })
+</script>
+
+<%- include('partials/_footer') %>

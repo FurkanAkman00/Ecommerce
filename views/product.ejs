@@ -1,0 +1,104 @@
+<%- include('partials/_header') %>
+<script src="https://js.stripe.com/v3/" defer></script>
+
+<br><br>
+
+<% if(typeof alert != 'undefined') { %>
+
+    <div class="product-alert">
+        <%= alert.error %>
+    </div>
+
+<% } %>
+
+<div class="detail-container border">
+    
+    <div class="image-container">
+            <img class="images" width="400" height="400" src="/images/<%= allImages[0].images[0].link %>" alt="IMAGE NOT FOUND">
+            <img class="not-found" width="400" height="400" hidden src="/images/products/large/error.png"
+            <% allImages.forEach(image =>{ %>
+                <img class="images" width="400" height="400" id="<%= image.variation_value %>" src="/images/<%= image.images[0].link %>" hidden alt="IMAGE NOT FOUND">
+            <% })%>
+
+    </div>
+
+    <div class="text-container">
+
+        <div class="header">
+            <h2><%= product.data[0].name %></h2>
+        </div>
+
+        <div class="description">
+            <p><%= product.data[0].page_description %></p>
+            <br
+            <p><%= product.data[0].price%> $</p>
+        </div>
+
+        <form id="form" method="POST" action="/cart/<%= product.data[0].id %>">
+            <%  variations.forEach(item => { %>
+                
+                <label for="<%= item.name %>"><%= item.name %></label>
+                <select onchange="handleChange()" id="selector" name="<%= item.id %>">
+                    <% item.values.forEach(value => { %>
+                        <option name="<%= value.name %>" value="<%= value.value %>"><%= value.name %></option>
+                    <% }) %>
+                </select>
+                
+            <% }) %>
+
+            <div class="quantity-product">
+                <p>Quantity:&nbsp;</p>
+                <button type="button" onclick="handleQuantity(this)" class="decrease">-</button>
+                <input class="quantity_value" type="text" name="product_quantity" value=1 readonly>
+                <button type="button" onclick="handleQuantity(this)" class="increment">+</button>
+             </div>
+
+            <br><br>
+            <button class="add-cart" formmethod="POST" formaction="/cart/add/<%=product.data[0].id%>" type="submit">ADD TO CART</button>
+            <button class="add-cart" formmethod="POST" formaction="/order/<%= product.data[0].id %>" type="submit">BUY NOW</button>
+
+        </form>
+    </div>
+
+ </div>
+
+ <script>
+
+    function handleQuantity(button){
+        var quantityValue = document.querySelector(".quantity_value").value
+        if(button.className == "increment"){
+            document.querySelector(".quantity_value").value = ++quantityValue
+        } else if(button.className == "decrease" && quantityValue != 1) {
+            document.querySelector(".quantity_value").value = (quantityValue-1)
+        }
+    }
+
+    function handleChange(){
+        var imageValue = document.getElementById("selector")
+        var imgs = document.querySelectorAll(".images")
+
+        var check = false
+        var notFound = document.querySelector(".not-found")
+        
+        if(!notFound.hasAttribute("hidden")){notFound.setAttribute("hidden","")}
+        
+        imgs.forEach(element =>{
+            if(!element.hasAttribute("hidden") && imageValue.name.toUpperCase() == "COLOR"){
+                element.setAttribute("hidden","")
+            }
+        })
+
+        imgs.forEach(element => {
+            if(imageValue.value == element.id && imageValue.name.toUpperCase() == "COLOR" ){
+                element.removeAttribute("hidden")
+                check = true
+            }
+        })
+
+        if(check == false && imageValue.name.toUpperCase() == "COLOR"){
+            notFound.removeAttribute("hidden")
+        }
+    }
+ </script>
+
+<%- include('partials/_footer') %>

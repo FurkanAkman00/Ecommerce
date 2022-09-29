@@ -1,0 +1,19 @@
+<%- include('partials/_header') %>
+
+    <div class="user-container">
+
+        <h1>PROFILE</h1>
+        <p>Name: <%= user.name %></p>
+        <p>Email: <%= user.email %></p>
+
+        <div class="user-cart">
+            <a href="/cart">
+                <span class="count-badge"><p><%= count %></p></span>
+                <img style="border-radius: 10px;" width="60" height="60" src="/images/products/cart.jpg" alt="">
+            </a>
+        </div>
+
+
+    </div>
+
+<%- include('partials/_footer') %>

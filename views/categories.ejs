@@ -1,0 +1,42 @@
+<%- include('partials/_header') %>
+
+<div class="mcategory">
+
+    <div class="mcategory-container">
+        <h1><%= mainCategory.data.name %></h1>
+        <br>
+        <p><%= mainCategory.data.page_description%></p>
+    </div>
+
+    <div class="scategory-container">
+        <h2>Subcategories</h2>
+        <hr>
+
+        <% for(let i=0;i<subCategories.data.length;i++){ %>
+            <div class="subcategories">
+                <h3><%= subCategories.data[i].name %></h3>
+                <img width="789" height="136" src='/images/<%= subCategories.data[i].image %>' alt="">
+                <p><%= subCategories.data[i].page_description %></p>
+
+                    <% if(isLastCategory == true){ %>
+                        <div style="margin-top: 30px;">
+                            <a class="view-product" href="/products/<%= subCategories.data[i].id %>/?page=1">View Products</a>
+                        </div>
+                    <% } %>
+                    
+                    <% if(isLastCategory == false) { %>
+                        <div style="margin-top: 30px;">
+                            <a class="view-product" href="/categories/<%= subCategories.data[i].id %>">View Products</a>
+                        </div>
+                    <% } %>
+                
+            </div>
+        <% } %>
+
+
+
+    </div>
+
+</div>
+
+<%- include('partials/_footer') %>

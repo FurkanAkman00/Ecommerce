@@ -1,0 +1,153 @@
+.cart-container{
+    margin: 70px;
+}
+
+.cart-header{
+    background-color: lightslategray;
+    height: 50px;
+    text-align: center;
+    border:1px;
+    border-radius: 10px;
+    padding-top: 12px;
+}
+
+.total-price{
+    background-color: lightslategrey;
+    width: 250px;
+    height: 200px;
+    float: right;
+    margin: 30px;
+    border: 3px;
+    border-radius: 10px;
+}
+.total-price>h2{
+    margin-top: 25px;
+    margin-left: 55px;
+}
+.total-price>p{
+    text-align: center;
+    margin-top: 20px;
+    font-size: 25px;
+}
+
+.total-price>a{
+    display: inline-block;
+    margin-left: 85px;
+    margin-top: 40px;
+}
+
+.cart-product{
+    background-color: lightslategrey;
+    width: 1200px;
+    margin-top: 20px;
+    border-radius: 10px;
+    display: flex;
+    align-items: flex-start;
+}
+
+.cart-img{
+    margin: 20px;
+}
+
+.cart-img>h2{
+    width: 400px;
+    margin-bottom: 10px;
+}
+
+.cart-text{
+    align-items: center;
+    height: 200px;
+    width: 500px;
+    display: flex;
+}
+
+.cart-description{
+    margin-right: 50px;
+}
+
+.product-prize{
+    margin-top: 50px;
+    font-size: 25px;
+    margin-left: 10px;
+}
+
+.variation{
+    margin-top: 20px;  
+}
+
+.product-prize{
+    margin-bottom: 15px;
+}
+
+#quantity{
+    text-align: center;
+    border: none;
+    width: 30px;
+    font-size: 20px;
+}
+
+.cart-buttons{
+    margin: 10px;
+    margin-left:10px;
+    float: right;
+}
+
+.quantity{
+    display: flex;
+    justify-content: center;
+    margin-top: 90px;
+    padding-bottom: 40px;
+}
+
+.delete{
+    align-items: center;
+    background-clip: padding-box;
+    background-color: #fa6400;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+    box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: inline-flex;
+    font-family: system-ui, -apple-system, system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    justify-content: center;
+    line-height: 1.25;
+    margin: 0;
+    min-height: 3rem;
+    padding: calc(.875rem - 1px) calc(1.5rem - 1px);
+    position: relative;
+    text-decoration: none;
+    transition: all 250ms;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: baseline;
+    width: auto;
+}
+.delete:hover,
+.delete:focus {
+    background-color: #fb8332;
+    box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+  }
+
+.quantity>button{
+    border:none;
+    background-color: blue;
+    color: white;
+    font-size: 20px;
+    width: 30px;
+}
+
+.more-info{
+    text-decoration: none;
+    color: black;   
+}
+
+.cart-alert{
+    margin-top: 50px;
+    text-align: center;
+    color:slategray;
+}
