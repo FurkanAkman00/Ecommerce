@@ -42,7 +42,6 @@ router.post("/register", [
         else{
             try {
                 // If no errors found, post user to api
-                console.log(errors.errors)
                 const user = {
                     secretKey: process.env.AUTH_KEY,
                     name: req.body.name,
