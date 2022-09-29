@@ -20,14 +20,14 @@ router.get("/register", (req, res) => {
 
 // Posting to register page, checking errors
 router.post("/register", [
-    check('name', 'Name cannot be empty!').exists(),
-    check('email', 'Email is required!').exists().normalizeEmail(),
+    check('name', 'Name cannot be empty!').exists().isLength({min:1}),
+    check('email', 'Email is required!').exists().normalizeEmail().isLength({min:4}),
     check("password", "Password must be at least 4 characters long").exists().isLength({ min: 4 })],
     async (req, res) => {
         
         // If errors exist render register page with alert.
         var errors = validationResult(req)
-        if (!errors.isEmpty()) {
+        if (!errors.errors.isEmpty) {
             var breadCrumbs = getBreadCrumbs("")
             breadCrumbs.push({ key: "Register", value: "auth/register" })
             
@@ -39,25 +39,27 @@ router.post("/register", [
                 isSignedIn:false
             })
         }
+        else{
+            try {
+                // If no errors found, post user to api
+                console.log(errors.errors)
+                const user = {
+                    secretKey: process.env.AUTH_KEY,
+                    name: req.body.name,
+                    email: req.body.email,
+                    password: req.body.password
+                }
 
-        try {
-            // If no errors found, post user to api
-            const user = {
-                secretKey: process.env.AUTH_KEY,
-                name: req.body.name,
-                email: req.body.email,
-                password: req.body.password
+                await axios.post(process.env.MAIN_URL.concat("auth/signup"), user)
+                
+                // If post request is successful redirect to login page
+                res.redirect("/auth/login")
+            } catch (error) {
+                res.status(400).json({
+                    status:'fail',
+                    error,
+                })
             }
-
-            await axios.post(process.env.MAIN_URL.concat("auth/signup"), user)
-            
-            // If post request is successful redirect to login page
-            res.redirect("/auth/login")
-        } catch (error) {
-            res.status(400).json({
-                status:'fail',
-                error,
-            })
         }
 })
 
