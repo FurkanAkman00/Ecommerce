@@ -78,8 +78,8 @@ router.get("/",checkAuth,async (req,res) =>{
         const session = await stripe.checkout.sessions.create({
             payment_method_types: ["card"],
             mode: 'payment',
-            success_url:`${process.env.SERVER_URL}order/result?order=success`,
-            cancel_url:`${process.env.SERVER_URL}order/result?order=failed`,
+            success_url:`http://localhost:${process.env.PORT || 5000}/order/result?order=success`,
+            cancel_url:`http://localhost:${process.env.PORT || 5000}/order/result?order=failed`,
             line_items: lineItems,
         });
         // Redirecting to stripe payment page
