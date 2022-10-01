@@ -101,10 +101,10 @@ describe("/POST Register",() =>{
         chai.request(server)
             .post("/auth/register")
             .set('content-type', 'application/json')
-            .send({name:"Furkncrda",password:"12rf34456712",email:"rrrrfrr@hotmail.com"})
+            .send({name:"Furkfdncrdoa",password:"1d2frf344f56712",email:"rrardrfrfr@hotmail.com"})
             .redirects(0)
             .end((err,res) =>{
-                expect(res).to.have.status(302);
+                expect(res).to.have.status(200);
                 expect(err).to.be.null;
                 done()
             })

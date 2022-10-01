@@ -50,7 +50,7 @@
 }
 
 .cart-img>h2{
-    width: 400px;
+    width: 300px;
     margin-bottom: 10px;
 }
 
@@ -62,7 +62,8 @@
 }
 
 .cart-description{
-    margin-right: 50px;
+    margin-top: 50px;
+    margin-right: 80px;
 }
 
 .product-prize{

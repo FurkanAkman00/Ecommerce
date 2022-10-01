@@ -21,7 +21,7 @@
          <div class="cart-product">
             <div class="cart-img">
                <h2><%= products[i].name %></h2>
-               <img class="product-img" src="/images/<%= images[i] %>" alt="">
+               <img height="195" width="195" class="product-img" src="/images/<%= images[i] %>" alt="">
             </div>
 
             <div class="cart-text">
@@ -30,9 +30,9 @@
          
             <div class="variation">
                <p class="product-prize"><%= products[i].price %> $</p>
-               <% if(cartProducts[i].variant.variation_values.size){ %> <p>SIZE: <%= cartProducts[i].variant.variation_values.size.toUpperCase() %></p> <% } %>
-               <% if(cartProducts[i].variant.variation_values.color){ %> <p>COLOR: <%= cartProducts[i].variant.variation_values.color.toUpperCase() %></p> <% } %>
-               <% if(cartProducts[i].variant.variation_values.width){ %> <p>WIDTH: <%= cartProducts[i].variant.variation_values.width.toUpperCase() %> </p> <% } %>
+                  <% if(cartProducts[i].variant.variation_values.size){ %> <p>SIZE: <%= cartProducts[i].variant.variation_values.size.toUpperCase() %></p> <% } %>
+                  <% if(cartProducts[i].variant.variation_values.color){ %> <p>COLOR: <%= cartProducts[i].variant.variation_values.color.toUpperCase() %></p> <% } %>
+                  <% if(cartProducts[i].variant.variation_values.width){ %> <p>WIDTH: <%= cartProducts[i].variant.variation_values.width.toUpperCase() %> </p> <% } %>
             </div>
 
             <form method="POST" action="/cart/<%= cartProducts[i].productId %>?_method=DELETE">

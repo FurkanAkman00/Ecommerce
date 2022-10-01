@@ -28,7 +28,7 @@ router.get("/", async (req,res) =>{
             if(products.data.length == 25){
                 products = await axios.get(process.env.MAIN_URL.concat("products/product_search?page=",counter,"&",process.env.SECRET_KEY))
                 counter++
-            }
+            } 
 
             // If products length < 25 break the loop 
 

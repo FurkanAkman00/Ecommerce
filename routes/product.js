@@ -23,7 +23,7 @@ router.get("/:id",async (req,res) =>{
                 allImages.push(image)
             }
         })
-        
+
         // If product not found show error message
         if(req.query.error == "notfound"){
             var alert = {error:"Product is not available at the moment. Please choose another variation!"}

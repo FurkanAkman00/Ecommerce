@@ -27,10 +27,12 @@ router.post("/register", [
         
         // If errors exist render register page with alert.
         var errors = validationResult(req)
-        if (!errors.errors.isEmpty) {
-            var breadCrumbs = getBreadCrumbs("")
-            breadCrumbs.push({ key: "Register", value: "auth/register" })
-            
+
+        var breadCrumbs = getBreadCrumbs("")
+        breadCrumbs.push({ key: "Register", value: "auth/register" })
+        
+        if (!errors.isEmpty()) {
+
             const alert = errors.array()
             res.render('signup', {
                 alert,
@@ -50,14 +52,24 @@ router.post("/register", [
                 }
 
                 await axios.post(process.env.MAIN_URL.concat("auth/signup"), user)
-                
                 // If post request is successful redirect to login page
                 res.redirect("/auth/login")
+
             } catch (error) {
-                res.status(400).json({
-                    status:'fail',
-                    error,
-                })
+                if(error.response.data.error == "User already exists"){
+                    var alert = ["User already exists. Please try to login"];
+                    res.render('signup', {
+                        alert,
+                        id: "register",
+                        breadCrumbs,
+                        isSignedIn:false
+                    })
+                } else {
+                    res.status(400).json({
+                        status:'fail',
+                        error,
+                    })
+                }
             }
         }
 })

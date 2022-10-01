@@ -86,6 +86,7 @@ router.get("/",checkAuth,async (req,res) =>{
         res.redirect(303, session.url);
         
     } catch (error) {
+        console.log(error)
         res.status(400).json({
             status:'fail',
             error,

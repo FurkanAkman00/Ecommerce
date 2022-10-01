@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "nyc mocha tests.js --timeout 25000",
+    "test": "nyc mocha tests.js --timeout 28000",
     "start": "nodemon index.js"
   },
   "author": "",

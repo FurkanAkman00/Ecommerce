@@ -9,7 +9,7 @@ router.get("/:id",async(req,res)=>{
         const id = req.params.id
         var breadCrumbs = getBreadCrumbs(id)
         
-        // Last category variable
+        // Last category variable  
         var isLastCategory = false
         
         // Getting subcategories

@@ -13,10 +13,11 @@ router.post("/add/:id",checkAuth,async(req,res) =>{
         var variant_id
 
         // Finding variant id with the information from req.body
+        
         product.variants.forEach(variant => {
-            if(variant.variation_values.color == req.body.color && variant.variation_values.width == req.body.width && variant.variation_values.size == req.body.size){
-                variant_id = variant.product_id
-            }
+                if(variant.variation_values.color == req.body.color && variant.variation_values.width == req.body.width && variant.variation_values.size == req.body.size){
+                    variant_id = variant.product_id
+                }
         })
 
         // Creating product object for api
@@ -33,7 +34,6 @@ router.post("/add/:id",checkAuth,async(req,res) =>{
        res.redirect("/cart")
 
     } catch (error) {
-        
         // If there arent variant id for choosen variations, Redirect to product page with alert
         if(error.response.data.error == "You must inform a Variant ID"){ res.redirect(`/product/${product.id}?error=notfound`) } 
         
@@ -65,14 +65,13 @@ router.get("/",checkAuth,async (req,res) =>{
             
             // Getting the product information
             let product = await axios.get(process.env.MAIN_URL.concat("products/product_search?id=",`${cartProducts.data.items[i].productId}`,"&",process.env.SECRET_KEY))
-            
             // Choosing the right image for variation value
-            product.data[0].image_groups.forEach(item =>{
-                if(item.view_type == "medium" && item.variation_value == cartProducts.data.items[i].variant.variation_values.color){
-                    images.push(item.images[0].link)
-                }
-            })
-            products.push(product.data[0])
+                product.data[0].image_groups.forEach(item =>{
+                    if(item.view_type == "medium" && item.variation_value == cartProducts.data.items[i].variant.variation_values.color){
+                        images.push(item.images[0].link)
+                    }
+                })
+                products.push(product.data[0])
         }
 
         // Calculating total price
@@ -80,7 +79,6 @@ router.get("/",checkAuth,async (req,res) =>{
         cartProducts.data.items.forEach(item =>{
             totalPrice = totalPrice + (item.variant.price * item.quantity)
         })
-
         // Rendering cart page
         res.render("cart",{
             cartProducts:cartProducts.data.items,
@@ -93,7 +91,6 @@ router.get("/",checkAuth,async (req,res) =>{
         })
         
     } catch (error) {
-        
         // If cart is empty, render the cart page with alert
         if(error.response.data.error == "There is no cart created for this user"){
             res.render("cart",{
@@ -102,7 +99,7 @@ router.get("/",checkAuth,async (req,res) =>{
                 breadCrumbs:breadCrumbs,
                 isSignedIn:req.cookies.token
             })
-        } else{
+        } else {
             res.status(400).json({
                 status:'fail',
                 error,

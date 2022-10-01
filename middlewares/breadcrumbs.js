@@ -1,16 +1,16 @@
 function getBreadCrumbs(id,name,product_id){
     var items
     var link
-
+                                
         if(id=="") {
-            items = ""
+            items = "" 
         }
         else{
             link = id
             items = id.split("-");
         }
 
-    var breadCrumbs = [{key:"HOME",value:""}]
+    var breadCrumbs = [{key:"HOME",value:""}] 
 
     if(items.length == 3){
         breadCrumbs.push({key:items[0].toUpperCase(),value:"categories/".concat(items[0])})
